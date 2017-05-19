@@ -1,0 +1,36 @@
+<!Doctype HTML>
+<html ng-app="sortingApp">
+<title>JS Code Challenge</title>
+  <head>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="bower_components/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="mainCtrl">
+    <h1 ng-hide="dataExist">{{ errorMsg }}</h1>
+    <table ng-show= "dataExist">
+      <tr class="headerStyle">
+        <th class="headerStyle" ng-click="sortData='id' ; sortInReverse=!sortInReverse">ID
+          <span ng-show="sortData=='id'" ng-class="(!sortInReverse) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"></span>
+        </th>
+        <th class="headerStyle" ng-click="sortData='userId'; sortInReverse=!sortInReverse">UserId
+          <span ng-show="sortData=='userId'" ng-class="(!sortInReverse) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"></span>
+        </th>
+        <th  class="headerStyle" ng-click="sortData='title'; sortInReverse=!sortInReverse">Title
+          <span ng-show="sortData=='title'" ng-class="(!sortInReverse) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"> </span>
+        </th>
+        <th class="headerStyle" ng-click="sortData='body';sortInReverse=!sortInReverse">Body
+          <span ng-show="sortData=='body'" ng-class="(!sortInReverse) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"></span>
+        </th>
+      </tr>
+      <tr ng-repeat = "event in events | orderBy:sortData:sortInReverse">
+        <td class="tableContent" title="{{event.id}}">{{ event.id }}</td>
+        <td class="tableContent" title="{{event.userId}}">{{ event.userId }}</td>
+        <td class="tableContent" title="{{event.title}}">{{ event.title }}</td>
+        <td class="tableContent" title="{{event.body}}">{{ event.body }}</td>
+      </tr>
+    </table>
+  </body>
+</html>
