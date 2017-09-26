@@ -12,12 +12,8 @@ $scope.loadData = function () {
 
 var onDataSuccess = function (res) {
   $scope.dataExist = true;
-  var i;
   $scope.events = res.data;
-    for(i =0; i < $scope.events.length; i++) {
-      $scope.eventsID = $scope.events[i];
-    }
-};
+ };
 
 var onDataError = function (res) {
   $scope.errorMsg = res.status + ': Data ' + res.statusText;
